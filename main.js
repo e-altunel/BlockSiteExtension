@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("submit").addEventListener("click", banSite);
   document.getElementById("clear").addEventListener("click", clear);
   updateList();
-  setInterval(updateList, 2000);
+  setInterval(updateList, 1000);
 });
 
 function updateList() {

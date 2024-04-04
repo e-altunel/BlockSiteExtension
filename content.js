@@ -9,14 +9,18 @@ setInterval(() => {
     for (let i = 0; i < banned_sites.length; i++) {
       const banned_site = banned_sites[i];
       if (current_url.includes(banned_site)) {
-        document.body.innerHTML =
-          "<h1 style='color: red; text-align: center; margin-top: 20%; font-size: 3em;'>Site is banned, fuck you</h1>";
+        if (!isPrev) {
+          document.body.outerHTML = `<body
+              style='margin: 0; padding: 0; background: black; display: flex; justify-content: center; align-items: center; height: 100vh;'>
+            <h1 style='color: white; text-align: center; font-size: 3em; background:black; margin:0;'>Site is banned, fuck you</h1></body>`;
+        }
         isBanned = true;
         isPrev = true;
         break;
       }
     }
     if (!isBanned && isPrev) {
+      isPrev = false;
       chrome.runtime.sendMessage({ message: "Reload" });
     }
   });
